@@ -1,0 +1,21 @@
+name: ssl_superresolution
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.9
+  - numpy
+  - scipy
+  - pytorch
+  - torchvision
+  - tqdm
+  - astropy
+  - pillow
+  - opencv
+  - matplotlib
+  - pandas
+  - pip
+  - pip:
+      - scikit-image
+      - scikit-learn
+      - tensorboard
