@@ -5,11 +5,12 @@ from torch.utils.data import DataLoader
 class Data:
     def __init__(self, args):
         self.args = args
-        self.data_train = args.data_train
-        self.data_test = args.data_test
+        
+        
 
         # load training dataset
         if not self.args.test_only:
+            self.data_train = args.data_train #如果是训练，那么就只加载训练数据集
             m_train = import_module('data.' + self.data_train.lower())
             trainset = getattr(m_train, self.data_train.upper())(self.args, name=self.data_train, train=True)
             self.loader_train = DataLoader(
@@ -20,6 +21,7 @@ class Data:
                 num_workers=0
             )
         else:
+            self.data_test = args.data_test#如果是测试，那么就只加载测试数据集
             self.loader_train = None
 
         # load testing dataset

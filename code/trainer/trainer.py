@@ -32,8 +32,8 @@ class Trainer:
 
     def terminate(self):
         if self.args.test_only:
-            self.test()
+            self.test()     # 如果是测试模式，直接运行 test() 并终止
             return True
         else:
-            epoch = self.scheduler_model.last_epoch + 1
-            return epoch >= self.args.epochs
+            epoch = self.scheduler_model.last_epoch + 1# 获取当前 epoch 轮数
+            return epoch >= self.args.epochs# 如果达到最大训练轮数，则终止

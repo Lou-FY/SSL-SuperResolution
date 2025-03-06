@@ -25,13 +25,14 @@ def set_template(args):
     elif args.template == 'VideoSR':
         args.task = "FlowVideoSR"
         args.model = "PWC_Recons"
-        args.save = "Deep_Blind_VSR"
-        args.data_train = 'REDS_ONLINE'
+        args.save = "../result"
+        ##args.data_train = 'REDS_ONLINE'
         # args.dir_data = '/tmp/pycharm_project_528/train-liuxing'
-        args.dir_data = 'D:\BaiduNetdiskDownload\dantu\\train'
-        args.data_test = 'VALID'
+        #args.dir_data = '../test/LR/000'
+        args.data_test = '../test/LR/000'#测试数据集，data/init.py中的Data类会加载这个数据集
+        # args.data_test = 'REDS_HRLR'
         # args.dir_data_test = '/tmp/pycharm_project_528/test'
-        args.dir_data_test = 'D:\BaiduNetdiskDownload\dantu\\test3'
+        #args.dir_data_test = '../test/LR/000'
         args.scale = 4
         args.patch_size = 64
         args.n_sequence = 5

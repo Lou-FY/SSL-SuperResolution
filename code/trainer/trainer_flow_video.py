@@ -353,15 +353,15 @@ class Trainer_Flow_Video(Trainer):
 
     def test(self):
         epoch = self.scheduler.last_epoch + 1
-        self.ckp.write_log('\nEvaluation:')
-        self.model.eval()
-        self.kernel_net.eval()
-        self.ckp.start_log(train=False)
+        self.ckp.write_log('\nEvaluation:')      #取出当前 epoch，并记录日志
+        self.model.eval()               #关闭 dropout、batch normalization，使模型进入测试模式
+        self.kernel_net.eval()           #关闭 dropout、batch normalization，使模型进入测试模式
+        self.ckp.start_log(train=False)  #开始记录测试日志
         cycle_psnr_list = []
 
         with torch.no_grad():  # 意味着模型的梯度都不会更新了，循环内的每一个张量的required_grada都设置为false
-            tqdm_test = tqdm(self.loader_test, ncols=80)  # 进度条
-            for idx_img, (input, gt, filename) in enumerate(tqdm_test):
+            tqdm_test = tqdm(self.loader_test, ncols=80)  # 显示进度条
+            for idx_img, (input, gt, filename) in enumerate(tqdm_test): # idx_img是索引，tqdm_test解包出（input是输入，gt是目标，filename是文件名）
 
                 filename = filename[self.args.n_sequence // 2][0]
 

@@ -1,4 +1,8 @@
 import torch
+print(torch.__version__)  # PyTorch 版本
+print(torch.version.cuda)  # PyTorch 使用的 CUDA 版本
+print(torch.cuda.is_available())  # 是否检测到 GPU
+print(torch.cuda.get_device_name(0))  # 显示 GPU 型号
 import data
 import model
 import loss
@@ -25,9 +29,9 @@ else:
     raise NotImplementedError('Task [{:s}] is not found'.format(args.task))
 
 
-while not t.terminate():
-    t.train()
-    # t.test()
+while not t.terminate(): 
+    #t.train()
+    t.test()
     # torch.save(model.state_dict(), '/tmp/pycharm_project_431/epoch100.pth')
 
 chkp.done()

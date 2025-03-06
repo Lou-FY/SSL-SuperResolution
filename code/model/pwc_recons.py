@@ -29,7 +29,7 @@ class PWC_Recons(nn.Module):
     def __init__(self,
                  num_in_ch=3,
                  num_out_ch=3,
-                 num_feat=64,
+                 num_feat=128,#原来是64，改为了128
                  num_frame=5,
                  deformable_groups=8,
                  num_extract_block=5,
@@ -83,7 +83,7 @@ class PWC_Recons(nn.Module):
         # self.load_state_dict(
         #     torch.load('D:\BaiduNetdiskDownload\dantu\model_epoch_4_4.pth'))
         self.load_state_dict(
-            torch.load('D:\\BaiduNetdiskDownload\\dantu\\model_epoch_4_8.pth'))
+            torch.load('../epoch_hongwai/model_epoch_4_23.pth'))
         # self.load_state_dict(
         #     torch.load('D:\BaiduNetdiskDownload\shiyanliuxing\epoch_hongw        # self.load_state_dict(
         #         #     torch.load('D:\BaiduNetdiskDownload\dantu\model_epoch_4_11.pth'))ai\model_epoch_4_120.pth'))
