@@ -1,6 +1,5 @@
 import os
 from importlib import import_module
-
 import torch
 import torch.nn as nn
 
@@ -13,15 +12,15 @@ class Model(nn.Module):
         self.cpu = args.cpu
         self.device = torch.device('cpu' if args.cpu else 'cuda')
         self.n_GPUs = args.n_GPUs
-        self.save_middle_models = args.save_middle_models
-        module = import_module('model.' + args.model.lower())
-        self.model = module.make_model(args).to(self.device)
+        self.save_middle_models = args.save_middle_models#中间模型是否保存
+        module = import_module('model.' + args.model.lower())#动态导入template文件中规定的模型
+        self.model = module.make_model(args).to(self.device)#调用make_model函数，实例化生成模型
         if not args.cpu and args.n_GPUs > 1:
             self.model = nn.DataParallel(self.model, range(args.n_GPUs))
         self.load(
-            ckp.dir,
+            ckp.dir,#ckp是个logger实例，dir是实验目录
             pre_train=args.pre_train,
-            resume=args.resume,
+            resume=args.resume,#true的话，从最近的保存中拉取
             cpu=args.cpu
         )
         print(self.get_model(), file=ckp.log_file)

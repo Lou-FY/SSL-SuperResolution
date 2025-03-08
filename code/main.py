@@ -14,12 +14,12 @@ from logger import logger
 #--template VideoSR
 args = option.args
 torch.manual_seed(args.seed)
-chkp = logger.Logger(args)
+chkp = logger.Logger(args)#创建了logger实例，内含有实验目录
 
 print("Selected task: {}".format(args.task))
-model = model.Model(args, chkp)
+model = model.Model(args, chkp)#传入logger中定义的实验目录
 loss = loss.Loss(args, chkp) if not args.test_only else None
-loader = data.Data(args)
+loader = data.Data(args)#不使用logger中的实验目录，自己设定
 
 if args.task == 'PretrainKernel':
     t = Trainer_Kernel(args, loader, model, loss, chkp)

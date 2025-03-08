@@ -83,7 +83,7 @@ class PWC_Recons(nn.Module):
         # self.load_state_dict(
         #     torch.load('D:\BaiduNetdiskDownload\dantu\model_epoch_4_4.pth'))
         self.load_state_dict(
-            torch.load('../epoch_hongwai/model_epoch_4_23.pth'))
+            torch.load('../epoch_hongwai/model_epoch_4_23.pth'))#先硬编码预设一个模型，在init里动态加载
         # self.load_state_dict(
         #     torch.load('D:\BaiduNetdiskDownload\shiyanliuxing\epoch_hongw        # self.load_state_dict(
         #         #     torch.load('D:\BaiduNetdiskDownload\dantu\model_epoch_4_11.pth'))ai\model_epoch_4_120.pth'))
